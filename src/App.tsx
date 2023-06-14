@@ -7,6 +7,12 @@ const Modal = () => {
     setIsOpen(!isOpen);
   };
 
+  const closeModal = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (e.target === e.currentTarget) {
+      setIsOpen(false);
+    }
+  };
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
       <button
@@ -16,7 +22,10 @@ const Modal = () => {
         모달창 열기
       </button>
       {isOpen && (
-        <div className="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-75">
+        <div
+          className="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-75"
+          onClick={closeModal}
+        >
           <div className="p-6 bg-white rounded-lg">
             <h2 className="mb-4 text-2xl font-bold">모달창</h2>
             <p>모달창 내용이 여기에 들어갑니다.</p>
